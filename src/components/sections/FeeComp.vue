@@ -1,15 +1,20 @@
 <template>
-    <section class="container">
+  <section>
+    <div class="container">
       Fee
-    </section>
-  </template>
+    </div>
+  </section>
+</template>
   
-  <script>
-  export default {
+<script>
+export default {
+
+}
+</script>
   
-  }
-  </script>
-  
-  <style scoped lass="scss">
-  
-  </style>
+<style scoped lang="scss">
+section{
+  background-color: rgb(228, 218, 218);
+}
+
+</style>

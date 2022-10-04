@@ -10,6 +10,6 @@
   }
   </script>
   
-  <style scoped lass="scss">
+  <style scoped lang="scss">
   
   </style>
