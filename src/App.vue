@@ -33,6 +33,14 @@ export default {
 </script>
 
 <style lang="scss">
+div{
+  border: 1px solid black;
+  background-color: rgba($color: green, $alpha: 0.2);
+}
+ul{
+    list-style: none;
+    margin: 0;
+}
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
