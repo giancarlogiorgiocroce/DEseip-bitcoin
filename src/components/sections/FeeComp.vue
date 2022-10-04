@@ -133,8 +133,11 @@ section{
   }
 
   .down{
+    width: 100%;
     p{
       font-size: 500%;
+      max-width: 100%;
+      overflow: auto;
     }
     span{
       text-decoration: underline;
