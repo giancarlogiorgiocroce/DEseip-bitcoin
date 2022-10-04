@@ -39,7 +39,11 @@ div{
 }
 ul{
     list-style: none;
-    margin: 0;
+}
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

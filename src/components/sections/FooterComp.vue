@@ -4,7 +4,7 @@
 
       <!-- Black Row -->
       <div class="row black">
-        <ul class="d-flex flex-column justify-content-center align-items-center">
+        <ul class="centered flex-column">
           <li class="mb-5">
             <img src="" alt="acme-logo">
           </li>
@@ -22,7 +22,7 @@
 
       <!-- Red Row -->
       <div class="row red">
-        <ul class="d-flex justify-content-center align-items-center">
+        <ul class="centered">
           <li>2022 Acme Corp Inc. - P.IVA 01234567890</li>
           <li>
             <a href="#">privacy policy</a>
