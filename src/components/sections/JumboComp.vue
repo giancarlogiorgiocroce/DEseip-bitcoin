@@ -13,7 +13,11 @@
             Prova il servizio di custodia affidabile e trasparente di Acme Corp: <span>calcola le tue commissioni mensili e scopri tutti i vantaggi.</span>
           </p>
 
-          <button></button>
+          <BtnComp
+            :buttonText="this.btnTxt"
+            :buttonStyle="this.btnStyle"
+          />
+
         </div>
         <!-- /Jumbo Text -->
 
@@ -39,8 +43,16 @@
 </template>
   
 <script>
+import BtnComp from '../cyclables/BtnComp.vue';
 export default {
-
+    components: { BtnComp },
+    data(){
+      return{
+        // Generating BtnComp
+        btnTxt: "calcola la tua fee >",
+        btnStyle:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
+      }
+    }
 }
 </script>
   

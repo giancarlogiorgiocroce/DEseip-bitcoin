@@ -54,7 +54,13 @@
           <div class="up flex-column centered mb-5">
             <h5 class="mb-2">Inserisci gli asset che vuoi custodire</h5>
             <input class="mb-2" type="number" placeholder="Asset" step="0.01" v-model="asset">
-            <button class="mb-2" @click="doMath">CALCOLA</button>
+            <!-- <button class="mb-2" @click="doMath">CALCOLA</button> -->
+            <BtnComp
+              class="mb-2"
+              @click="doMath"
+              :buttonText="this.btnTxt"
+              :buttonStyle="this.btnStyle"
+            />
           </div>
           <!-- /Insert asset -->
 
@@ -78,9 +84,15 @@
 </template>
   
 <script>
+import BtnComp from '../cyclables/BtnComp.vue';
 export default {
+  components: { BtnComp },
   data(){
     return{
+      // Generating BtnComp
+      btnTxt: "calcola",
+      btnStyle:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
+
       asset: null,
       fee: null,
       minPatrimony: 15000,
@@ -202,20 +214,20 @@ section{
       text-align: center;
       border-radius: 10px;
     }
-    button{
-      background-color: rgb(191, 13, 13);
-      border: 3px solid rgb(191, 13, 13);
+    // button{
+    //   background-color: rgb(191, 13, 13);
+    //   border: 3px solid rgb(191, 13, 13);
 
-      color: white;
-      padding: 3% 0;
-      width: 40%;
+    //   color: white;
+    //   padding: 3% 0;
+    //   width: 40%;
       
-      &:hover{
-        background-color: rgb(150, 13, 13);
-        border: 3px solid rgb(100, 13, 13);
-        color: burlywood;
-      }
-    }
+    //   &:hover{
+    //     background-color: rgb(150, 13, 13);
+    //     border: 3px solid rgb(100, 13, 13);
+    //     color: burlywood;
+    //   }
+    // }
   }
 
   .down{
