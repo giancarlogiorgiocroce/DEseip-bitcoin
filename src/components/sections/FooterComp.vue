@@ -14,7 +14,7 @@
           <li>Via Emilio Marchi 4, Milano (MI) - ITALY</li>
           <li>info@acmecorp.com</li>
           <li class="mt-1">
-            <span>Design by Deseip</span>
+            <span>Design by Deseip, powered by G. G. Croce</span>
           </li>
         </ul>
       </div>
