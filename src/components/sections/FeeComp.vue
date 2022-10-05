@@ -83,41 +83,16 @@ export default {
     return{
       asset: null,
       fee: null,
+      minPatrimony: 15000,
 
       // establishing comparison parameters
-      patrimonyA: 15,
-      patrimonyB: 500,
-      patrimonyC: 1000,
-      patrimonyD: 5000,
-      patrimonyE: 10000,
-      patrimonyF: 1000000,
-
-      priceA: 0.7,
-      priceB: 0.6,
-      priceC: 0.5,
-      priceD: 0.4,
-      priceE: 0.3,
-
       params: [
-        // { range:[15000, 500000, 1000000], price: [0.7, 0.6,] },
-        // { range:[500000, 1000000, 5000000], price: [0.6, 0.5 ]},
-        // { range:[1000000, 5000000, 10000000], price: [0.5, 0.4] },
-        // { range:[5000000, 10000000, 1000000000], price: [0.4, 0.3] },
-        // { range:[10000000, 1000000000, 5000000000], price: [0.3,] },
-
-        { range:[15001, 500000, 1000000], price: 0.7, },
-        { range:[500001, 1000000, 5000000], price: 0.6, },
-        { range:[1000001, 5000000, 10000000], price: 0.5, },
-        { range:[5000001, 10000000, 1000000000], price: 0.4, },
-        { range:[10000001, 1000000000, 5000000000], price: 0.3, },
+        { price: 0.7, range:[0, 500000]},
+        { price: 0.6, range:[500000, 1000000]},
+        { price: 0.5, range:[1000000, 5000000]},
+        { price: 0.4, range:[5000000, 10000000]},
+        { price: 0.3, range:[10000000, 1000000000]},
       ]
-      // params: [
-      //   { patrimony: 500, price: 0.7, },
-      //   { patrimony: 1000, price: 0.6, },
-      //   { patrimony: 5000, price: 0.5, },
-      //   { patrimony: 10000, price: 0.4, },
-      //   { patrimony: 1000000, price: 0.3, },
-      // ]
     }
   },
   methods:{
@@ -127,114 +102,28 @@ export default {
       // asset is transformed in currency format.
       this.asset = parseFloat(this.asset).toFixed(2);
 
-      // return true if in range, otherwise false
-      // function inRange(x, min, max) {
-      //     return ((x-min)*(x-max) <= 0);
-      // }
-
-
-
-      if(this.asset < this.patrimonyA){
-        this.fee = 0;
-        // console.log('troppo poco');
-      }
-      else if(this.asset == this.patrimonyA){
-        this.fee = this.asset * 0.7 / 12;
-        // console.log('il giusto');
-      }
+      // doing math
+      if(this.asset < this.minPatrimony) this.fee = 0;
       else{
         this.params.forEach(el => {
-
-
-
-          if (this.asset < el.range[0] && this.asset < el.range[1]){
-            this.fee += 0;
+          if(this.asset > el.range[0] && this.asset >= el.range [1]){
+            let feeable = el.range[1] - el.range[0];
+            this.fee += feeable * el.price / 100 / 12;
+            // console.log('superiore ad entrambi');
           }
-          // else if(this.asset >= el.range[1] && this.asset < el.range[2]){
-          //   this.fee += el.range[1] * el.price / 100 / 12;
-          //   console.log('superiore', el.price, (el.range[1] * el.price / 100 / 12));
-          // } 
-          // else if (this.asset == el.range[2]){
-          //   let fakeAsset = this.asset;
-          //   this.fee += (fakeAsset - el.range[1]) * el.price / 100 / 12;
-          // } 
-          // else if (this.asset > el.range[0] && this.asset < el.range[1]){
-          //   let fakeAsset = this.asset;
-          //   this.fee += (fakeAsset - el.range[0]) * el.price / 100 / 12;
-          // } 
+          else if(this.asset < el.range[0] && this.asset < el.range [1]){
+            this.fee += 0;
+            // console.log('inferiore ad entrambi');
+          }
+          else if(this.asset > el.range[0] && this.asset < el.range [1]){
+            let fakeAsset = this.asset - el.range[0];
+            this.fee += fakeAsset * el.price / 100 / 12;
+            // console.log('a metà');
+          }
         });
-        console.log('si vola');
       }
+      // /doing math
 
-      // if(this.asset < this.patrimonyA){
-      //     this.fee = 0;
-      //     console.log('sei povero');
-      // }
-      // else if(this.asset >= this.patrimonyA && this.asset <= this.patrimonyB){
-      //   this.fee = this.asset * this.priceA / 12;
-      // }
-      // else if(this.asset > this.patrimonyB && this.asset <= this.patrimonyC){
-      //   this.fee += this.patrimonyB * this.priceA / 12;
-      //   this.fee += (this.asset - this.patrimonyB) * this.priceB / 12;
-      // }
-      // else if(this.asset > this.patrimonyC && this.asset <= this.patrimonyD){
-      //   this.fee += this.patrimonyB * this.priceA / 12;
-      //   this.fee += this.patrimonyC * this.priceB / 12;
-      //   this.fee += (this.asset - this.patrimonyC) * this.priceC / 12;
-      // }
-      // else if(this.asset > this.patrimonyD && this.asset <= this.patrimonyE){
-      //   this.fee += this.patrimonyB * this.priceA / 12;
-      //   this.fee += this.patrimonyC * this.priceB / 12;
-      //   this.fee += this.patrimonyD * this.priceC / 12;
-      //   this.fee += (this.asset - this.patrimonyD) * this.priceD / 12;
-      // }
-      // else if(this.asset > this.patrimonyE && this.asset <= this.patrimonyF){
-      //   this.fee += this.patrimonyB * this.priceA / 12;
-      //   this.fee += this.patrimonyC * this.priceB / 12;
-      //   this.fee += this.patrimonyD * this.priceC / 12;
-      //   this.fee += this.patrimonyE * this.priceD / 12;
-      //   this.fee += (this.asset - this.patrimonyE) * this.priceE / 12;
-      // }
-
-      // if(this.asset < this.patrimonyA){
-      //     this.fee = 0;
-      //     console.log(this.fee, 'sei povero');
-      // }
-      // else {
-      //   this.params.forEach(el => {
-      //     if(this.asset >= el.patrimony){
-      //       console.log('è maggiore o uguale a', el.patrimony);
-      //       this.fee += (el.patrimony*el.price/12);
-      //       console.log(this.fee);
-      //     }
-      //   })
-      // }
-
-      // if (this.asset == this.patrimonyA) {
-      //   this.fee = this.patrimonyA * this.priceA / 12;
-      //   console.log('sono 15!');
-      // } else if (this.asset > this.patrimonyA){
-      //   this.params.forEach((el, i) => {
-          // console.log(i);
-          // let segnaposto = i + 1;
-          // console.log(segnaposto);
-
-          // console.log(el);
-
-          // if(this.asset > el[i].patrimony && this.asset < el.patrimony[segnaposto]){
-          //   this.fee +=  this.asset * el.price / 12;
-          //   console.log('sono in mezzo tra', el.patrimony[i], 'e', el.patrimony[segnaposto]);
-          // } 
-          // else if (this.asset > el.patrimony[i] && this.asset > el.patrimony[segnaposto]){
-          //   this.fee += el.patrimony * el.price / 12;
-          // } 
-          // else if (this.asset < el.patrimony[i] && this.asset < el.patrimony[segnaposto]){
-          //   return;
-          // }
-      //   })
-      // } else {
-      //   console.log('fermati!');
-      // } 
     }
   }
 }
@@ -247,6 +136,7 @@ section{
     margin-bottom: 50px;
   }
 }
+  // TUTORIAL
 .tutorial{
   ul{
     margin: 0;
@@ -289,6 +179,9 @@ section{
     }
   }
 }
+  // /TUTORIAL
+
+  // FEE
 .fee-calc{
   // height: 585px;
   padding: 3%;
@@ -341,5 +234,6 @@ section{
     }
   }
 }
+  // /FEE
 
 </style>
