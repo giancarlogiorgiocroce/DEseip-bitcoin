@@ -51,7 +51,6 @@ section {
   background-color: rgb(164, 140, 140);
 }
 .jumbo-text{
-  font-family: 'Poppins', sans-serif;
   h1,
   span{
     font-weight: 900;

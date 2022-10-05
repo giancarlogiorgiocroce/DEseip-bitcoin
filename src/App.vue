@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style lang="scss">
+*{
+  font-family: 'Poppins', sans-serif;
+}
 div{
   border: 1px solid black;
   // background-color: rgba($color: green, $alpha: 0.2);

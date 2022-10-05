@@ -49,7 +49,6 @@ footer {
   background-color: rgb(33, 30, 30);
   img{
     padding: 0;
-    // width: 99vw;
   }
 }
 
