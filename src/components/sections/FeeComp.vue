@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5">
+  <section class="py-5" ref="fees">
     <div class="container">
 
       <!-- Title -->
@@ -54,12 +54,14 @@
           <div class="up flex-column centered mb-5">
             <h5 class="mb-2">Inserisci gli asset che vuoi custodire</h5>
             <input class="mb-2" type="number" placeholder="Asset" step="0.01" v-model="asset">
-            <BtnComp
-              class="mb-2"
-              @click="doMath"
-              :buttonText="this.btnTxt"
-              :buttonStyle="this.btnStyle"
-            />
+              
+            <div @click="doMath">
+              <BtnComp
+                class="mb-2"
+                :buttonText="this.btnTxt"
+                :buttonStyle="this.btnStyle"
+              />
+            </div>
           </div>
           <!-- /Insert asset -->
 
@@ -117,6 +119,7 @@ export default {
       if(this.asset < this.minPatrimony) this.fee = 0;
       else{
         this.params.forEach(el => {
+          // console.log('inizio il ciclo');
           if(this.asset > el.range[0] && this.asset >= el.range [1]){
             let feeable = el.range[1] - el.range[0];
             this.fee += feeable * el.price / 100 / 12;
