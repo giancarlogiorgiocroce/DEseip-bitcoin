@@ -1,10 +1,11 @@
 <template>
-    <div class="card centered" style="width: 18rem;">
+    <div class="card centered" :style="cardSize">
         <img class="card-img-top" 
             :src="cardImg" 
             :alt="cardTitle">
         <div class="card-body centered flex-column">
-            <h5 class="card-title text-center">
+            <h5 v-if="cardTitle"
+                class="card-title text-center">
                 {{ cardTitle }}
             </h5>
             <p class="card-text text-center">
@@ -20,11 +21,16 @@ export default {
         cardImg: String,
         cardTitle: String,
         cardText: String,
+        cardSize: String,
     }
 }
 </script>
   
 <style scoped lang="scss">
+.card{
+    margin: 2% 0;
+    border: none !important;
+}
 img{
     max-width: 90px;
 }

@@ -36,10 +36,10 @@ export default {
 *{
   font-family: 'Poppins', sans-serif;
 }
-div{
-  border: 1px solid black;
-  // background-color: rgba($color: green, $alpha: 0.2);
-}
+// div{
+//   border: 1px solid black;
+//   // background-color: rgba($color: green, $alpha: 0.2);
+// }
 ul{
     list-style: none;
 }
