@@ -5,19 +5,6 @@
       <!-- Black Row -->
       <div class="row black">
         <img src="../../assets/footer-img.png" alt="acme-info">
-        <!-- <ul class="centered flex-column">
-          <li class="mb-5">
-            <img src="" alt="acme-logo">
-          </li>
-          <li class="my-2">
-            <h5>Acme Corp Inc.</h5>
-          </li>
-          <li>Via Emilio Marchi 4, Milano (MI) - ITALY</li>
-          <li>info@acmecorp.com</li>
-          <li class="mt-1">
-            <span>Design by Deseip, powered by G. G. Croce</span>
-          </li>
-        </ul> -->
       </div>
       <!-- /Black Row -->
 
@@ -57,10 +44,6 @@ footer {
 .black {
   height: 369px;
   background-color: rgb(33, 30, 30);
-  span{
-    color: grey;
-    font-size: small;
-  }
 }
 
 .red {

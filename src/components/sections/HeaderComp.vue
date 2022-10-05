@@ -22,7 +22,4 @@ export default {
 header{
   height: 87px;
 }
-img{
-  height: 66%;
-}
 </style>
