@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="container">
+    <div>
 
       <!-- Black Row -->
       <div class="row black">
