@@ -4,7 +4,8 @@
 
       <!-- Black Row -->
       <div class="row black">
-        <ul class="centered flex-column">
+        <img src="../../assets/footer-img.png" alt="acme-info">
+        <!-- <ul class="centered flex-column">
           <li class="mb-5">
             <img src="" alt="acme-logo">
           </li>
@@ -16,7 +17,7 @@
           <li class="mt-1">
             <span>Design by Deseip, powered by G. G. Croce</span>
           </li>
-        </ul>
+        </ul> -->
       </div>
       <!-- /Black Row -->
 
