@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="py-5">
     <div class="jumbotron container">
-      <div class="row my-5 centered">
+      <div class="row centered">
 
         <!-- Jumbo Text -->
         <div class="jumbo-text col-7">

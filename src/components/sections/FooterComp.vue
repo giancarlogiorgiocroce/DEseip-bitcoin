@@ -43,11 +43,21 @@ footer {
 
 .black {
   height: 369px;
+  width: 100%;
+  margin: 0;
+
   background-color: rgb(33, 30, 30);
+  img{
+    padding: 0;
+    // width: 99vw;
+  }
 }
 
 .red {
   height: 70px;
+  width: 100%;
+  margin: 0;
+  
   background-color: rgb(215, 15, 15);
   ul{
     margin: 0;
