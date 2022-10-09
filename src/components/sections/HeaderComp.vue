@@ -1,5 +1,5 @@
 <template>
-  <header class="container d-flex align-items-center">
+  <header class="container d-flex align-items-center p-2">
     <svg width="125" height="57" viewBox="0 0 125 57" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect width="125" height="57" fill="url(#pattern0)"/>
       <defs>
@@ -19,7 +19,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-header{
-  height: 87px;
-}
+
 </style>

@@ -52,8 +52,8 @@
 
           <!-- Insert asset -->
           <div class="up flex-column centered mb-5">
-            <h5 class="mb-2">Inserisci gli asset che vuoi custodire</h5>
-            <input class="mb-2" type="number" placeholder="Asset" step="0.01" v-model="asset">
+            <h5 class="mb-4">Inserisci gli asset che vuoi custodire</h5>
+            <input class="mb-4" type="number" placeholder="Asset" step="0.01" v-model="asset">
               
             <div @click="doMath">
               <BtnComp
@@ -67,12 +67,38 @@
 
           <!-- View asset -->
           <div class="down flex-column centered mt-5">
-            <!-- <p>&hyphen;&hyphen;&comma;&hyphen;&hyphen;&euro;</p> -->
 
-            <p v-if="!fee">&hyphen;&hyphen;&comma;&hyphen;&hyphen;&euro;</p>
-            <p v-else>{{ parseFloat(fee).toFixed(2) }}&euro;</p>
+            <div v-if="!fee" class="basic text-center">
+              <p>&hyphen;&hyphen;&comma;&hyphen;&hyphen;&euro;</p>
+              <span>Dettagli del calcolo</span>
+            </div>
+            <div v-else class="aftercalc text-center">
+              <div class="fee-display mb-5">
+                <h3>La tua fee:</h3>
+                <p>{{ parseFloat(fee).toFixed(2) }}&euro;</p>
+                <span>
+                  Dettagli del calcolo
+                  <!-- <img src="../../assets/arrow-down-circle.png" alt="->"> -->
+                  <i class="fa-regular fa-circle-arrow-down"></i>
+                  <!-- <font-awesome-icon icon="fa-regular fa-circle-arrow-down" /> -->
+                </span>
+              </div>
 
-            <span>Dettagli del calcolo</span>
+              <div class="fee-add-info">
+                <h3 class="p-1 mb-5">
+                  Prova il servizio di custodia <br/>Acme Corp: non potrai più farne a meno.
+                </h3>
+                <div class="btn-container centered">
+                  <a class="m-3" href="#">
+                    <BtnComp :buttonText="this.btnTxtSx" :buttonStyle="this.btnStyleSx" />
+                  </a>
+                  <a class="m-3" href="#">
+                    <BtnComp :buttonText="this.btnTxtDx" :buttonStyle="this.btnStyleDx" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
           <!-- /View asset -->
 
@@ -90,10 +116,19 @@ export default {
   components: { BtnComp },
   data(){
     return{
-      // Generating BtnComp
+      // Generating BtnComp for doMath()
       btnTxt: "calcola",
       btnStyle:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
 
+      // BtnComp for comunication
+      btnTxtSx: "Parla con noi",
+      btnStyleSx:" background-color: rgb(88, 73, 73); border: 3px solid rgb(255, 255, 255);",
+
+      // BtnComp for account
+      btnTxtDx: "Apri un conto",
+      btnStyleDx:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
+
+      // Data for DoMath() function
       asset: null,
       fee: null,
       minPatrimony: 15000,
@@ -197,6 +232,7 @@ section{
   // FEE
 .fee-calc{
   // height: 585px;
+  width: 50%;
   padding: 3%;
   background-color: rgb(88, 73, 73);
   border: 3px solid rgb(0, 0, 0);
@@ -221,6 +257,7 @@ section{
     width: 100%;
     p{
       font-size: 500%;
+      font-weight: 900;
       max-width: 100%;
       overflow: auto;
     }
@@ -229,6 +266,11 @@ section{
       &:hover{
         color: burlywood;
         cursor: pointer;
+      }
+    }
+    .fee-add-info{
+      a{
+        text-decoration: none;
       }
     }
   }
