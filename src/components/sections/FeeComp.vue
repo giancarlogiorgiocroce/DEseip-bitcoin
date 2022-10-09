@@ -48,7 +48,9 @@
 
       <!-- Fee calculator -->
       <div class="row calculator centered">
-        <div v-if="!errPatrimony" class="col-8 fee-calc flex-column centered">
+
+        <!-- Fee table -->
+        <div v-if="!errPatrimony && !tableActive" class="col-8 fee-calc flex-column centered">
           <!-- Insert asset -->
           <div class="up flex-column centered mb-5">
             <h5 class="mb-4">Inserisci gli asset che vuoi custodire</h5>
@@ -69,17 +71,15 @@
 
             <div v-if="!fee" class="basic text-center">
               <p>&hyphen;&hyphen;&comma;&hyphen;&hyphen;&euro;</p>
-              <span>Dettagli del calcolo</span>
+              <span @click="toggleTable">Dettagli del calcolo</span>
             </div>
             <div v-else class="aftercalc text-center">
               <div class="fee-display mb-5">
                 <h3>La tua fee:</h3>
                 <p>{{ parseFloat(fee).toFixed(2) }}&euro;</p>
-                <span>
+                <span @click="toggleTable">
                   Dettagli del calcolo
-                  <!-- <img src="../../assets/arrow-down-circle.png" alt="->"> -->
-                  <i class="fa-regular fa-circle-arrow-down"></i>
-                  <!-- <font-awesome-icon icon="fa-regular fa-circle-arrow-down" /> -->
+                  <i class="fa-solid fa-circle-arrow-down"></i>
                 </span>
               </div>
 
@@ -101,6 +101,7 @@
           </div>
           <!-- /View asset -->          
         </div>
+        <!-- /Fee table -->
         
         <!-- Error Modal -->
         <div v-if="errPatrimony" class="col-8 error-patrimony flex-column centered">
@@ -115,8 +116,11 @@
         </div>
         <!-- /Error Modal -->
 
-
-
+        <!-- Pricing Table -->
+        <div v-if="tableActive" class="col-8 price-table flex-column centered">
+          <img @click="toggleTable" id="fee-table" src="../../assets/table.png" alt="price-table">
+        </div>
+        <!-- /Pricing Table -->
 
       </div>
       <!-- /Fee calculator -->
@@ -131,25 +135,28 @@ export default {
   components: { BtnComp },
   data(){
     return{
+        //BUTTONS PROPS
       // Generating BtnComp for doMath()
       btnTxt: "calcola",
       btnStyle:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
-
       // BtnComp for comunication
       btnTxtSx: "Parla con noi",
       btnStyleSx:" background-color: rgb(88, 73, 73); border: 3px solid rgb(255, 255, 255);",
-
       // BtnComp for account
       btnTxtDx: "Apri un conto",
       btnStyleDx:" background-color: rgb(191, 13, 13); border: 3px solid rgb(191, 13, 13);",
 
+        // BOOLEANS
+      // Booleans for modal
+      errPatrimony: false,
+      tableActive: false,
+
+        // DOMATH()
       // Data for DoMath() function
       asset: null,
       fee: null,
       minPatrimony: 15000,
-      errPatrimony: false,
-
-      // establishing comparison parameters
+      // Establishing comparison parameters
       params: [
         { price: 0.7, range:[0, 500000]},
         { price: 0.6, range:[500000, 1000000]},
@@ -195,7 +202,11 @@ export default {
 
     closeModal(){
       this.errPatrimony = false;
-    }
+    },
+
+    toggleTable(){
+      this.tableActive = !this.tableActive;
+    },
   }
 }
 </script>
@@ -251,8 +262,8 @@ section{
 }
   // /TUTORIAL
 
-  // ERROR: PATRIMONY TOO LOW
-.error-patrimony {
+  // ERROR PATRIMONY AND PRICING TABLE
+.error-patrimony, .price-table{
   position: fixed;
   top: 0;
   left: 0;
@@ -260,7 +271,7 @@ section{
   width: 100vw;
   height: 100vh;
   background-color: rgba(189, 171, 171, 0.7);
-  .error-box {
+  .error-box{
     position: relative;
     width: 33%;
     background-color: white;
@@ -273,25 +284,14 @@ section{
       max-width: 45px;
     }
   }
+  #fee-table{
+    max-width: 70%;
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }
-
-
-
-/*
-position: absolute;
-width: 846px;
-height: 561px;
-left: 537px;
-top: 2009px;
-
-background: #FCF9F8;
-box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.1);
-border-radius: 25px;
-
-*/
-
-
-  // ERROR: PATRIMONY TOO LOW
+  // ERROR PATRIMONY AND PRICING TABLE
 
   // FEE
 .fee-calc{
