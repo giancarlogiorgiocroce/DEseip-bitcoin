@@ -48,8 +48,7 @@
 
       <!-- Fee calculator -->
       <div class="row calculator centered">
-        <div class="col-8 fee-calc flex-column centered">
-
+        <div v-if="!errPatrimony" class="col-8 fee-calc flex-column centered">
           <!-- Insert asset -->
           <div class="up flex-column centered mb-5">
             <h5 class="mb-4">Inserisci gli asset che vuoi custodire</h5>
@@ -100,9 +99,25 @@
             </div>
 
           </div>
-          <!-- /View asset -->
-
+          <!-- /View asset -->          
         </div>
+        
+        <!-- Error Modal -->
+        <div v-if="errPatrimony" class="col-8 error-patrimony flex-column centered">
+          <div class="error-box">
+            <div class="d-block my-5">
+              <img @click="closeModal" src="../../assets/x-circle.png" alt="close">
+            </div>
+            <h3 class="text-center p-5 m-2">
+              Ci dispiace, al momento il nostro servizio è disponibile solo a partire da €15.000
+            </h3>
+          </div>
+        </div>
+        <!-- /Error Modal -->
+
+
+
+
       </div>
       <!-- /Fee calculator -->
 
@@ -132,6 +147,7 @@ export default {
       asset: null,
       fee: null,
       minPatrimony: 15000,
+      errPatrimony: false,
 
       // establishing comparison parameters
       params: [
@@ -151,7 +167,9 @@ export default {
       this.asset = parseFloat(this.asset).toFixed(2);
 
       // doing math
-      if(this.asset < this.minPatrimony) this.fee = 0;
+      if(this.asset < this.minPatrimony){
+        this.errPatrimony = true;
+      }
       else{
         this.params.forEach(el => {
           // console.log('inizio il ciclo');
@@ -173,6 +191,10 @@ export default {
       }
       // /doing math
 
+    },
+
+    closeModal(){
+      this.errPatrimony = false;
     }
   }
 }
@@ -229,9 +251,53 @@ section{
 }
   // /TUTORIAL
 
+  // ERROR: PATRIMONY TOO LOW
+.error-patrimony {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(189, 171, 171, 0.7);
+  .error-box {
+    position: relative;
+    width: 33%;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 10px 0px 10px rgb(131, 112, 112);
+    img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      max-width: 45px;
+    }
+  }
+}
+
+
+
+/*
+position: absolute;
+width: 846px;
+height: 561px;
+left: 537px;
+top: 2009px;
+
+background: #FCF9F8;
+box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.1);
+border-radius: 25px;
+
+*/
+
+
+  // ERROR: PATRIMONY TOO LOW
+
   // FEE
 .fee-calc{
   // height: 585px;
+  position: relative;
+
   width: 50%;
   padding: 3%;
   background-color: rgb(88, 73, 73);
@@ -276,5 +342,4 @@ section{
   }
 }
   // /FEE
-
 </style>
