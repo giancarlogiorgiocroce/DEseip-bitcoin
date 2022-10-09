@@ -35,7 +35,7 @@
           <!-- Pair -->
           <li class="number centered">
             <div class="shadow"></div>
-            <div class="circle centered">1</div>
+            <div class="circle centered">3</div>
           </li>
           <li class="text">
             Apri il conto e godi di tutti i vantaggi
@@ -365,11 +365,24 @@ section{
 @media screen and (max-width: 768px) {
 
   .tutorial{
-    flex-direction: row !important;
-    li{
-      margin: auto 5% !important;
+    ul{
+      display: block !important;
+      li{
+        font-size: 18px !important;
+
+        margin: auto;
+        max-width: 100%;
+      }
+      .number{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .shadow{
+        left: 47%;
+        top: 4px;
+      }
     }
-    
   }
   
 }

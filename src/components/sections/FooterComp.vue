@@ -44,7 +44,6 @@ footer {
 .black {
   width: 100%;
   margin: 0;
-
   background-color: rgb(33, 30, 30);
   img{
     padding: 0;
@@ -54,7 +53,6 @@ footer {
 
 .red {
   margin: 0;
-  
   background-color: rgb(215, 15, 15);
   ul{
     margin: 0;
@@ -69,6 +67,14 @@ footer {
     &:hover{
       text-decoration: underline;
       color: burlywood;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .red{
+    li{
+      font-size: 12px;
     }
   }
 }
