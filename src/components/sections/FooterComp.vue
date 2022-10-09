@@ -9,7 +9,7 @@
       <!-- /Black Row -->
 
       <!-- Red Row -->
-      <div class="row red">
+      <div class="row red p-1">
         <ul class="centered">
           <li>2022 Acme Corp Inc. - P.IVA 01234567890</li>
           <li>
@@ -42,19 +42,17 @@ footer {
 }
 
 .black {
-  height: 369px;
   width: 100%;
   margin: 0;
 
   background-color: rgb(33, 30, 30);
   img{
     padding: 0;
+    height: 100%;
   }
 }
 
 .red {
-  height: 70px;
-  width: 100%;
   margin: 0;
   
   background-color: rgb(215, 15, 15);
@@ -62,7 +60,7 @@ footer {
     margin: 0;
   }
   li{
-    margin: 0 20px;
+    margin: 20px;
   }
   a{
     text-decoration: none;

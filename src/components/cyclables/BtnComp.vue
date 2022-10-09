@@ -16,7 +16,7 @@ export default {
 <style scoped lang="scss">
 .button {
     padding: 3% 0;
-    width: 16vw;
+    width: 15vw;
 
     color: white;
     text-transform: uppercase;
@@ -28,5 +28,12 @@ export default {
         color: burlywood;
         cursor: pointer;
     }
+}
+
+@media screen and (max-width: 576px) {
+  .button {
+    padding: 3% 0;
+    width: 22vw;
+  }
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="row centered">
 
         <!-- Jumbo Text -->
-        <div class="jumbo-text col-7">
+        <div class="jumbo-text col-md-7 col-12">
           <h1>Quanto costa custodire le tue cripto?</h1>
           <h1 class="text-light mb-5">Scoprilo con Acme Corp.</h1>
           <p class="mb-5">
@@ -22,7 +22,7 @@
         <!-- /Jumbo Text -->
 
         <!-- Jumbo Image -->
-        <div class="jumbo-image col-5 ">
+        <div class="jumbo-image col-md-5 col-12">
           <img src="../../assets/Bitcoin 1.png" alt="bitcoin-logo">
         </div>
         <!-- /Jumbo Image -->
@@ -70,6 +70,29 @@ section {
 
   img {
     width: 100%;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 768px) {
+  .jumbo-text  {
+    margin-bottom: 1rem;
+    .button{
+      margin: 0 auto;
+    }
+    // align-items: center;
+
+    // text-align: center !important;
+  }
+}
+@media screen and (max-width: 576px) {
+  .jumbo-image  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 70%;
+    }
   }
 }
 </style>

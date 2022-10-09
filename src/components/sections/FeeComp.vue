@@ -58,7 +58,6 @@
               
             <div @click="doMath">
               <BtnComp
-                class="mb-2"
                 :buttonText="this.btnTxt"
                 :buttonStyle="this.btnStyle"
               />
@@ -295,7 +294,6 @@ section{
 
   // FEE
 .fee-calc{
-  // height: 585px;
   position: relative;
 
   width: 50%;
@@ -321,11 +319,13 @@ section{
 
   .down{
     width: 100%;
+    // overflow: auto;
+
     p{
       font-size: 500%;
       font-weight: 900;
-      max-width: 100%;
-      overflow: auto;
+      overflow: hidden;
+      text-align: center;
     }
     span{
       text-decoration: underline;
@@ -338,6 +338,46 @@ section{
       a{
         text-decoration: none;
       }
+    }
+    .aftercalc{
+      overflow: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .number{
+    font-size: 32px;
+    .circle{
+      width: 7vw !important;
+      height: 7vw !important;
+    }
+    .shadow{
+      width: 7vw !important;
+      height: 7vw !important;
+    }
+  }
+  .fee-calc  {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .tutorial{
+    flex-direction: row !important;
+    li{
+      margin: auto 5% !important;
+    }
+    
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  .fee-display{
+    p{
+      font-size: 35px !important;
     }
   }
 }
