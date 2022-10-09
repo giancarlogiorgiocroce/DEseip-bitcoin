@@ -360,6 +360,10 @@ section{
   .fee-calc  {
     width: 100%;
   }
+
+  #fee-table{
+    max-width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -383,6 +387,10 @@ section{
         top: 4px;
       }
     }
+  }
+
+  #fee-table{
+    max-width: 130% !important;
   }
   
 }
